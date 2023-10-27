@@ -1,0 +1,25 @@
+<div class="container-fluid" style="margin-top: 5em;">
+  <div class="row flex-center flex-column">
+    <label for="searchbar">Rechercher</label>
+  </div>
+  <div class="row flex-center flex-column">
+    <input class="col-8 " type="search" name="searchbar" id="searchbar" [(ngModel)]="search">
+  </div>
+  <div class="row">
+    <div class="col col-3" *ngFor="let coin of coins | filter:search">
+      <div class="card">
+      <div class="card-header">{{ coin.name | uppercase }}</div>
+      <div class="card-body">
+        <h4>{{ coin.symbol }}</h4>
+        <h5>Classement : {{ coin.rank }}</h5>
+        <p>Prix actuel : {{ coin.priceUsd | number:'1.0-0'}}</p>
+        <label class="paper-btn margin" for="modal-2" (click)="selectCoin(coin)">Voir</label>
+      </div>
+      <div class="card-footer">
+        <a href="{{ coin.explorer }}">Site</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  <app-coins-modal [coinsModal]="coinParent"></app-coins-modal>
+</div>

@@ -1,0 +1,14 @@
+
+<input class="modal-state" id="modal-2" type="checkbox">
+<div class="modal">
+  <label class="modal-bg" for="modal-2"></label>
+  <div class="modal-body">
+    <label class="btn-close" for="modal-2">X</label>
+    <h4 class="modal-title">{{ coinsModal?.symbol }}-{{ coinsModal?.name }}</h4>
+    <h5 class="modal-subtitle">Classement : {{ coinsModal?.rank }}</h5>
+    <p class="modal-text">Offre actuelle : {{ coinsModal?.supply | number:'1.0-0' }}</p>
+    <p class="modal-text text-danger" *ngIf="coinsModal?.maxSupply == null; else elseBlock">Pas d'offre Max</p>
+    <ng-template #elseBlock><p>Offre max : {{ coinsModal?.maxSupply | number:'1.0-0' }}</p></ng-template>
+    <p class="modal-text">Nice !</p>
+  </div>
+</div>
